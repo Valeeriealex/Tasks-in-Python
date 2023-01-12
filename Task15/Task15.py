@@ -10,7 +10,7 @@ def Fibonacci(n):
     else:
         return Fibonacci(n-1) + Fibonacci(n-2)
 
-#функция отрицвтельных чисел Фибоначчи
+#функция отрицательных чисел Фибоначчи
 def NegaFibonacci(n):
     if n == 1:                       
         return 1

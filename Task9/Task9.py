@@ -2,7 +2,7 @@
 #Найдите произведение элементов на указанных позициях. 
 #Позиции хранятся в файле file.txt в одной строке одно число.
 
-from random import randint
+from random import randint #генерируют псевдослучайные целые числа из модуля random
 
 def list(n):
     list = []
