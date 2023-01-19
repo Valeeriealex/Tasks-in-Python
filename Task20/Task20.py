@@ -1,52 +1,58 @@
-#Даны два файла, в каждом из которых находится запись многочлена. 
+#Даны два файла, в каждом из которых находится запись многочлена.
 #Задача - сформировать файл, содержащий сумму многочленов.
+#pol1 = "12*x**8+2*x**6+2*x**4+3*x**3+2*x**2"
+#pol2 = "34*x**25+20*x**11+10*x**7+8*x**4+1*x**3+6*x**1+3"
 
-from itertools import *
-from Task19 import get_polynomial
-import os
-os.system("cls")
+#pol1 = pol1.split("+")
+#pol2 = pol2.split("+")
 
+#print(pol1)
+#print(pol2)
 
-file1 = 'Task20_1.txt'
-file2 = 'Task20_2.txt'
+#for indx,value in enumerate(pol1):
+    #pol1[indx] = list(map(int,value.split("*x**")))
+#for indx,value in enumerate(pol2):
+    #pol2[indx] = list(map(int,value.split("*x**")))
 
+#print(pol1)
+#print(pol2)
 
-def read_pol(file):  # Получение данных из файла
-    with open(str(file), 'r') as data:
-        pol = data.read()
-    return pol
+#result = pol1 + pol2
+#print(result)
 
+#result = sorted(result,key = lambda x: x[1] if len(x)>1 else 0,reverse=True)
 
-def convert_pol(pol):  # удалили "хвостик" и "порезали" строку на массив, разделитель знак " + "
-    pol.replace('= 0', '')
-    pol = pol.split(' + ')
-    pol = [i[0] for i in pol]
-    for i in range(len(pol)):
-        if pol[i] == 'x':
-            pol[i] = '1'
-    pol = pol[::-1]
-    return pol
+#print(result)
 
+#result_list = []
+#while cur_indx<len(result)-1:
+    #cur_num = result[cur_indx]
+    #next_num = result[cur_indx+1]
+    #if len(cur_num)>1 and len(next_num)>1:
+        #if cur_num[1] == next_num[1]:
+            #sum_koeff = cur_num[0]+next_num[0]
+            #result_list.append([sum_koeff,cur_num[1]])
+            #cur_indx+=1
+        #else:
+            #result_list.append(result[cur_indx])
+    #elif len(cur_num)>1 and len(next_num) == 1:
+        #result_list.append(result[cur_indx])
+    #elif len(cur_num) == 1 and len(next_num) == 1:
+        #result_list.append([cur_num[0]+next_num[0]])
+    #cur_indx +=1
+#cur_indx+=1
 
-pol1 = read_pol(file1)
-pol2 = read_pol(file2)
-print("Исходные полиномы: ")
-print(pol1)
-print(pol2)
-print('_'*30)
-print(convert_pol(pol1))
-print(convert_pol(pol2))
-pol1_coef = list(map(int, convert_pol(pol1)))
-pol2_coef = list(map(int, convert_pol(pol2)))
-print(pol1_coef)
-print(pol2_coef)
-print('_'*30)
+#if cur_indx < len(result):
+    #result_list.append(result[-1])
 
-sum_coef = list(map(sum, zip_longest(pol1_coef, pol2_coef, fillvalue=0)))
-print(sum_coef)
-sum_coef = sum_coef[::-1]
-print(sum_coef)
-sum_pol = get_polynomial(len(sum_coef)-1, sum_coef)
-print('Итоговый результат сложения полиномов:\n', sum_pol)
-with open('Task20.txt', 'w') as file_sum:
-    file_sum.writelines(sum_pol)
+#print(result_list)
+
+#for indx,val in enumerate(result_list):
+    #if len(val)>1:
+        #result_list[indx] = f'{val[0]}*x**{val[1]}'
+    #else:
+        #result_list[indx] = f'{val[0]}'
+        
+#print(result_list)
+#result_string = "+".join(result_list)
+#print(result_string)
