@@ -6,19 +6,12 @@ board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 #Вывод на печать поля
 def print_board():
-    print('_' * 4 * board_size)
+    print(('_' * 4 * board_size))
     for i in range(board_size):
         print((' ' * 3 + '|') * 3)
         print('', board [i * 3], '|', board[1 + i * 3], '|', board[2 + i * 3], '|')
         print(('_' * 3 + '|') * 3)
-
-#Ход игроков
-def game_step(index, char):
-    if (index > 9 or index < 1 or board[index-1] in ('x', 'o')):
-        return False
-    board[index-1] = char
-    return True
-
+    
 #Проверка победы одного из игроков
 def check_win():
     win = False
@@ -28,9 +21,17 @@ def check_win():
         (0, 4, 8), (2, 4, 6)
     )
     for pos in win_combo:
-        if (board[pos[0]] == board[pos[1]] and board[pos[2]] == board[pos[3]]):
+        if (board[pos[0]] == board[pos[1]] and board[pos[1]] == board[pos[2]] and board[pos[1]] in ('x','o')):
             win = board[pos[0]]
-            return win
+    return win
+
+#Ход игроков
+def game_step(index, char):
+    if (index > 9 or index < 1 or board[index-1] in ('x', 'o')):
+        return False
+    board[index-1] = char
+    return True
+
 
 #Запуск игры
 def start_game():
@@ -58,4 +59,4 @@ def start_game():
         print('Выиграл ' + check_win())
  
 print('Начните игру в крестики-нолики!')
-#start_game()
+start_game()
